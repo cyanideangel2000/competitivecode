@@ -1,0 +1,43 @@
+API: shuffled
+Parameter 1: pointer to existing garage
+Parameter 2: pointer to new garage. THIS SHOLD BE FREED post use by the caller
+return:      SUCCESS if all's good, else FAILURE
+
+ShuffleAlgo: current_slot + 1. Simply move the car to the adjancet slot
+             roll-over if needed
+
+             Roll-over isn't needed for a single pass as we have N-1 cars,
+             however if you keep invoking the api on the result of previous invocation, its needed
+
+             Other options can be: randomnumber, -2, +5, hash(car, slot) etc
+
+Complexity: O(n)
+Scans the complete garage once, and populates the new shuffled garage
+
+Thoughts:
+List can be used too, however since we know N, using vetors suffices
+MAP can be used too, however cpu cyles spend in storing and retrieving isn't worth my shuffle algo
+
+Compilation:
+Compiles well on my OSX clang
+Haven't used any non-portable code, so should compile everywhere with +11 support
+
+DataStructs Used:
+1: Used a class to represent an entry in garage
+2: Used a vector of entry to represent a garage
+
+
+UnitTesting:
+gtest, cppunit can be used to do API based testing
+
+TestCases:
+1. initial is NULL
+2. new fails
+3. empty slot is slot_0
+4. empty slot is slot_1
+5. empty slot is slot_n-1 (nth slot)
+6. slot[n-1] has a car
+7. maybe sanity if garage has N slots and N-1 car? Not done yet!
+8. try with small garage (<10)
+9. try with medium garage (<1000)
+10. try with large garage (<10000) and check for cpu hogs

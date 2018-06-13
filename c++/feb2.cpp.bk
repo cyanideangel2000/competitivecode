@@ -1,0 +1,76 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+int main(void)
+{
+    string raw;
+    unsigned int n, q, i, j, k;
+    unsigned long count;
+    vector<unsigned int>row;
+
+    cin >> n >> q;
+    row.reserve(n);
+    i = n;
+    while (i>1)
+    {
+        getline(cin, raw, ' ');
+        row.push_back(atoi(raw.c_str()));
+        i--;
+    }
+    cin >> i;
+    row.push_back(i);
+    while (q > 1)
+    {
+        q--;
+        getline(cin, raw, ' ');
+        i = atoi(raw.c_str());
+        if (1 == i) {
+            unsigned int l, r;
+            getline(cin, raw, ' ');
+            k = atoi(raw.c_str());
+
+            getline(cin, raw, ' ');
+            l = atoi(raw.c_str());
+
+            cin >> r;
+            for (i=l; i<=r; i++)
+            {
+                if (k > i) n = k - i;
+                else n = i - k;
+                count = count + row[i-1] * n;
+                // cout << "1: " << row[i-1] << " " << n << endl;
+            }
+            cout << count << endl;
+            count = 0;
+        } else if (2 == i) {
+            getline(cin, raw, ' ');
+            i = atoi(raw.c_str());
+            cin >> j;
+            row[i-1] = row[i-1] + j;
+        }
+    }
+    getline(cin, raw, ' ');
+    i = atoi(raw.c_str());
+    if (1 == i) {
+        unsigned int l, r;
+        getline(cin, raw, ' ');
+        k = atoi(raw.c_str());
+
+        getline(cin, raw, ' ');
+        l = atoi(raw.c_str());
+
+        cin >> r;
+        for (i=l; i<=r; i++)
+        {
+            if (k > i) n = k - i;
+            else n = i - k;
+
+            count = count + row[i-1] * n;
+            // cout << "1: " << row[i-1] << " " << n << " " << count << endl;
+        }
+        cout << count << endl;
+        count = 0;
+    }
+}

@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+int main(void)
+{
+    int testcase;
+    int n, i, j, k, count;
+    vector<unsigned int> book;
+    string raw;
+
+    books.reserve(1000);
+    cin >> testcase;
+    while(testcase--)
+    {
+        k = 0;
+        cin >> n;
+        i = n;
+        while(i>1)
+        {
+            getline(cin, raw, ' ');
+            books.push_back(atoi(raw.c_str()));
+            if (!k) k = book[0];
+            else if (k > book[n-i]) k = book[n-k];
+            i--;
+        }
+        cin >> i;
+        book.push_back(i);
+        if (k<i) k = i;
+        vector<unsigned int> ::iterator itr  book.begin();
+        count = 0;
+        for(;itr != book.end(); ++itr)
+        {
+            count += (*itr-1);
+        }
+    }
+
+}
