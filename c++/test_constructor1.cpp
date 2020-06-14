@@ -34,6 +34,21 @@ Test temp()
     return t3;
 }
 
+class A
+{
+    public:
+        A() { a_ = 10; cout << "Consturctor A " << a_ << endl; }
+        int a_;
+        ~A() { cout << "Destructing A" << endl; }
+};
+
+class B: public A
+{
+    public:
+        B() { a_ = 11; cout << "Constructor B " << a_ << endl; }
+        ~B() { cout << "Destructing B" << endl; }
+};
+
 int main (void)
 {
     Test t1, t2(10), t3;
@@ -43,4 +58,5 @@ int main (void)
     cout << "After func: " << t3.a << endl;
     cout << "After func: " << temp().a << endl;
     cout << "end" << endl;
+    B b;
 }

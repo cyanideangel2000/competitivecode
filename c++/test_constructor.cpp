@@ -31,7 +31,8 @@ void temp (Test a)
 Test temp1 ()
 {
     cout << "in function" << endl;
-    return Test(94);
+    Test temp1(94);
+    return temp1;
 }
 
 int main()
@@ -42,9 +43,10 @@ int main()
         vec.push_back(t);
         vec.push_back(t1);
         vec.push_back(t1);
+        cout << "reassigning values " << endl;
         t.a = 20;
         t1.a = 21;
-        cout << vec[0].a << " " << vec[1].a << endl << t.a << " " << t1.a << endl;
+        cout << "vector: " << vec[0].a << " " << vec[1].a << endl << t.a << " " << t1.a << endl;
 
         cout << "Testing: " << endl;
         Test t2(30), t3(40);
