@@ -57,6 +57,7 @@ int main (void)
     t3 = temp();
     cout << "After func: " << t3.a << endl;
     cout << "After func: " << temp().a << endl;
-    cout << "end" << endl;
+    cout << "ConsturctorTest" << endl;
     B b;
+    cout << "end" << endl;
 }
